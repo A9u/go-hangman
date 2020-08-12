@@ -10,7 +10,7 @@ func getEntries(entries map[string]bool) (keys []string) {
 		keys = append(keys, k)
 	}
 
-	return keys
+	return
 }
 
 func main() {
@@ -33,13 +33,9 @@ func main() {
 
 		// evaluate a loss! If user guesses a wrong letter or the wrong word, they lose a chance.
 
-		if chances == 0 {
+		if chances == 0 && correctEntries != word {
 			fmt.Println("You lose")
 			break
-		}
-
-		if correctEntries != word {
-			fmt.Println("Incorrect guess")
 		}
 
 		// evaluate a win!
@@ -60,7 +56,13 @@ func main() {
 		fmt.Scanln(&str)
 
 		// compare and update entries, placeholder and chances.
+		if _, ok := entries[str]; ok {
+			fmt.Println("You have already entered")
+			continue
+		}
+
 		entries[str] = true
+
 		if strings.Contains(word, str) {
 			for k, v := range word {
 				guessedString := string(v)
