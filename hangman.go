@@ -61,6 +61,17 @@ func main() {
 			continue
 		}
 
+		if len(str) > 2 {
+			if str == word {
+				fmt.Println("You have guessed correctly")
+				break
+			} else {
+				entries[str] = true
+				chances = chances - 1
+				continue
+			}
+		}
+
 		entries[str] = true
 
 		if strings.Contains(word, str) {
