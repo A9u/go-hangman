@@ -144,7 +144,8 @@ func main() {
 			return
 
 		case <-ticker.C:
-			fmt.Println("Timeout")
+			fmt.Println("\nTimeout")
+			fmt.Printf("Word:%v\n", word)
 			return
 		}
 	}
